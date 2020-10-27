@@ -1,0 +1,53 @@
+<h1 class="text-center">Info Curso</h1>
+
+<hr>
+
+<form #cursoForm="ngForm" *ngIf="curso"><!--*ngIf: só exibe o formulario se curso tiver sido retonado com sucesso-->
+	<div class="form-group row">	
+		<label class="col-sm-2 col-form-label">Nome:</label>
+		<div class="col-sm-10">
+			<input [(ngModel)]="curso.name" name="nome" #cursoName="ngModel" required class="form-control" [ngClass]="{'is-invalid': cursoName.invalid}">
+			<div class="invalid-feedback">
+				<span>Nome é obrigatório</span>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="form-group row">	
+		<label class="col-sm-2 col-form-label">Preço:</label>
+		<div class="col-sm-10">
+			<input [(ngModel)]="curso.price" name="preco" #cursoPrice="ngModel" type="number" required class="form-control" [ngClass]="{'is-invalid': cursoPrice.invalid}">
+			<div class="invalid-feedback">
+				<span>Preço é obrigatório</span>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="form-group row">	
+		<label class="col-sm-2 col-form-label">Rating:</label>
+		<div class="col-sm-10">
+			<input [(ngModel)]="curso.rating" name="rating" #cursoRating="ngModel" type="number" required class="form-control" [ngClass]="{'is-invalid': cursoRating.invalid}">
+			<div class="invalid-feedback">
+				<span>Rating é obrigatório</span>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="form-group row">	
+		<label class="col-sm-2 col-form-label">Descrição:</label>
+		<div class="col-sm-10">
+			<textarea [(ngModel)]="curso.description" name="description" #cursoDescription="ngModel" required class="form-control" [ngClass]="{'is-invalid': cursoDescription.invalid}"></textarea>
+			<div class="invalid-feedback">
+				<span>Descrição é obrigatória</span>
+			</div>
+
+		</div>
+	</div>
+
+	<button [disabled]="cursoForm.invalid" (click)="save()" class="btn btn-primary mr-2">Salvar</button>
+	<button [routerLink]="['/cursos']" class="btn btn-secondary">Voltar</button>
+
+</form>
